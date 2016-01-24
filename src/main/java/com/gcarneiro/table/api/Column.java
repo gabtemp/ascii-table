@@ -14,5 +14,5 @@ public interface Column<T extends Serializable> {
 
     String resolveValue(T data);
 
-    Class<? extends T> getType();
+    Class<T> getType();
 }

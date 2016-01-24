@@ -14,9 +14,9 @@ public interface Table {
 
     void setColumns(List<Column> columns);
 
-    List<Object> getRows();
+    List<?> getRows();
 
-    void setRows(List<Object> rows);
+    void setRows(List<?> rows);
 
     String renderTable();
 }
