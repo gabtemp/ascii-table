@@ -30,6 +30,6 @@ public class StringColumnTest {
     @Test
     public void testGetColumnName() throws Exception {
         StringColumn column = new StringColumn("ColumnName");
-        assertThat(column.getColumnName(), is("DateColumn"));
+        assertThat(column.getColumnName(), is("ColumnName"));
     }
 }

@@ -11,6 +11,7 @@ import com.gcarneiro.table.api.Column;
 public class StringColumn implements Column<String> {
 
     private final String columnName;
+    private String rowProperty;
 
     public StringColumn(String columnName) {
         this.columnName = columnName;
@@ -18,6 +19,14 @@ public class StringColumn implements Column<String> {
 
     public String getColumnName() {
         return this.columnName;
+    }
+
+    public String getRowProperty() {
+        return rowProperty;
+    }
+
+    public void setRowProperty(String rowProperty) {
+        this.rowProperty = rowProperty;
     }
 
     public String resolveValue(String data) {

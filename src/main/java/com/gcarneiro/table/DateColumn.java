@@ -16,6 +16,7 @@ public class DateColumn implements Column<Date> {
     private final String columnName;
     //Todo: Enable configuration of the format and locale
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
+    private String rowProperty;
 
     public DateColumn(String columnName) {
         this.columnName = columnName;
@@ -23,6 +24,14 @@ public class DateColumn implements Column<Date> {
 
     public String getColumnName() {
         return this.columnName;
+    }
+
+    public String getRowProperty() {
+        return rowProperty;
+    }
+
+    public void setRowProperty(String rowProperty) {
+        this.rowProperty = rowProperty;
     }
 
     public String resolveValue(Date data) {

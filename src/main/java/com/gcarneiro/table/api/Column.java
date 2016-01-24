@@ -12,6 +12,10 @@ public interface Column<T extends Serializable> {
 
     String getColumnName();
 
+    String getRowProperty();
+
+    void setRowProperty(String rowProperty);
+
     String resolveValue(T data);
 
     Class<T> getType();

@@ -39,7 +39,7 @@ public class DateColumnTest {
 
     @Test
     public void testGetColumnName() throws Exception {
-        DateColumn column = new DateColumn("ColumnName");
+        DateColumn column = new DateColumn("DateColumn");
         assertThat(column.getColumnName(), is("DateColumn"));
     }
 }

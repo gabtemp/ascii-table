@@ -22,7 +22,9 @@ public class PropertyTableTest {
         PropertyTable table = new PropertyTable();
 
         Column column = new StringColumn("COLUMN");
-        String row = "ROW";
+        column.setRowProperty("string");
+        TestRow row = new TestRow();
+        row.string = "ROW";
 
         table.setColumns(Collections.singletonList(column));
         table.setRows(Collections.singletonList(row));
@@ -36,9 +38,11 @@ public class PropertyTableTest {
         PropertyTable table = new PropertyTable();
 
         Column column = new DateColumn("COLUMN");
+        column.setRowProperty("date");
         Calendar calendar = Calendar.getInstance();
         calendar.set(2016, JANUARY, 24);
-        Date row = calendar.getTime();
+        TestRow row = new TestRow();
+        row.date = calendar.getTime();
 
         table.setColumns(Collections.singletonList(column));
         table.setRows(Collections.singletonList(row));
@@ -47,4 +51,16 @@ public class PropertyTableTest {
         assertThat(tableString, is("| COLUMN | \n| 24/01/2016 | \n"));
     }
 
+    private class TestRow {
+        String string;
+        Date date;
+
+        public String getString() {
+            return string;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+    }
 }

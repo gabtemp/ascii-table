@@ -4,6 +4,7 @@ import com.gcarneiro.table.api.Column;
 import com.gcarneiro.table.api.Table;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -56,8 +57,30 @@ public class PropertyTable implements Table {
         return tableString.toString();
     }
 
-    //TODO: extract values from properties;
     private Serializable getRowValue(Column column, Object row) {
-        return (Serializable) column.getType().cast(row);
+        try {
+            Method method = findGetMethod(column.getRowProperty(), row);
+            Object value = method.invoke(row);
+            return (Serializable) column.getType().cast(value);
+        } catch (Exception e) {
+            //TODO: resolve exceptions
+            throw new RuntimeException();
+        }
+    }
+
+    private Method findGetMethod(String rowProperty, Object row) throws NoSuchMethodException {
+        final String GET_METHOD = "get";
+        final String IS_METHOD = "is";
+
+        String methodSuffix = rowProperty.substring(0, 1).toUpperCase() + rowProperty.substring(1);
+        String getMethod = GET_METHOD + methodSuffix;
+        Method method;
+        try {
+            method = row.getClass().getMethod(getMethod);
+        } catch (NoSuchMethodException e) {
+            String isMethod = IS_METHOD + methodSuffix;
+            method = row.getClass().getMethod(isMethod);
+        }
+        return method;
     }
 }
