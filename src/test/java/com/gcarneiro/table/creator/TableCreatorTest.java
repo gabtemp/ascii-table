@@ -1,5 +1,6 @@
 package com.gcarneiro.table.creator;
 
+import com.gcarneiro.table.TableCreator;
 import com.gcarneiro.table.api.Column;
 import org.hamcrest.core.Is;
 import org.junit.Test;
@@ -49,6 +50,8 @@ public class TableCreatorTest {
         TableCreator tableCreator = new TableCreator();
         tableCreator.addStringColumn("DateColumn", "string");
         tableCreator.addDateColumn("StringColumn", "date");
+        tableCreator.addNumberColumn("NumberColumn", "number");
+        tableCreator.addBooleanColumn("BooleanColumn", "bool");
         tableCreator.setRows(getRows());
         String tableString = tableCreator.createAsciiTable();
         assertThat(countLines(tableString), is(3));
@@ -56,19 +59,16 @@ public class TableCreatorTest {
 
     private List<TestRow> getRows() {
         List<TestRow> rows = new ArrayList<>();
-        rows.add(new TestRow("Row1", new Date()));
-        rows.add(new TestRow("Row2", new Date()));
+        rows.add(new TestRow());
+        rows.add(new TestRow());
         return rows;
     }
 
     public class TestRow {
-        String string;
-        Date date;
-
-        public TestRow(String string, Date date) {
-            this.string = string;
-            this.date = date;
-        }
+        String string = "Row";
+        Date date = new Date();
+        int number = 123456;
+        boolean bool = false;
 
         public String getString() {
             return string;
@@ -76,6 +76,14 @@ public class TableCreatorTest {
 
         public Date getDate() {
             return date;
+        }
+
+        public int getNumber() {
+            return number;
+        }
+
+        public boolean isBool() {
+            return bool;
         }
     }
 }

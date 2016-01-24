@@ -1,6 +1,6 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.Column;
+import com.gcarneiro.table.api.AbstractColumn;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,27 +11,13 @@ import java.util.Date;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class DateColumn implements Column<Date> {
+public class DateColumn extends AbstractColumn<Date> {
 
-    private final String columnName;
     //Todo: Enable configuration of the format and locale
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
-    private String rowProperty;
 
-    public DateColumn(String columnName) {
-        this.columnName = columnName;
-    }
-
-    public String getColumnName() {
-        return this.columnName;
-    }
-
-    public String getRowProperty() {
-        return rowProperty;
-    }
-
-    public void setRowProperty(String rowProperty) {
-        this.rowProperty = rowProperty;
+    protected DateColumn(String columnName) {
+        super(columnName);
     }
 
     public String resolveValue(Date data) {

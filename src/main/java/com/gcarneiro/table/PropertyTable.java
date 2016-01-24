@@ -19,6 +19,9 @@ public class PropertyTable implements Table {
 
     List<?> rows;
 
+    protected PropertyTable() {
+    }
+
     public List<Column> getColumns() {
         return columns;
     }

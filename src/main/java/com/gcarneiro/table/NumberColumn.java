@@ -1,0 +1,33 @@
+package com.gcarneiro.table;
+
+import com.gcarneiro.table.api.AbstractColumn;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+
+/**
+ * @author gabriel.carneiro
+ * @since 24/01/16.
+ */
+public class NumberColumn extends AbstractColumn<Number> {
+
+    private final int decimalPlaces;
+
+    protected NumberColumn(String columnName, int decimalPlaces) {
+        super(columnName);
+        this.decimalPlaces = decimalPlaces;
+    }
+
+    @Override
+    public String resolveValue(Number data) {
+        //TODO: Enable configuration of number format/locale
+        NumberFormat instance = NumberFormat.getInstance(Locale.ENGLISH);
+        instance.setMaximumFractionDigits(decimalPlaces);
+        return instance.format(data);
+    }
+
+    @Override
+    public Class<Number> getType() {
+        return Number.class;
+    }
+}

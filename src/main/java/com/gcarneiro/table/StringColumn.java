@@ -1,6 +1,6 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.Column;
+import com.gcarneiro.table.api.AbstractColumn;
 
 /**
  * A column that renders {@link String} rows.
@@ -8,25 +8,10 @@ import com.gcarneiro.table.api.Column;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class StringColumn implements Column<String> {
+public class StringColumn extends AbstractColumn<String> {
 
-    private final String columnName;
-    private String rowProperty;
-
-    public StringColumn(String columnName) {
-        this.columnName = columnName;
-    }
-
-    public String getColumnName() {
-        return this.columnName;
-    }
-
-    public String getRowProperty() {
-        return rowProperty;
-    }
-
-    public void setRowProperty(String rowProperty) {
-        this.rowProperty = rowProperty;
+    protected StringColumn(String columnName) {
+        super(columnName);
     }
 
     public String resolveValue(String data) {
