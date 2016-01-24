@@ -18,8 +18,7 @@ public class DateColumnTest {
 
     @Test
     public void testResolveValue() throws Exception {
-        DateColumn column = new DateColumn();
-
+        DateColumn column = new DateColumn("DateColumn");
         Calendar calendar = Calendar.getInstance();
 
         calendar.set(2000, JANUARY, 22);
@@ -34,7 +33,13 @@ public class DateColumnTest {
 
     @Test
     public void testGetType() throws Exception {
-        DateColumn column = new DateColumn();
+        DateColumn column = new DateColumn("ColumnName");
         assertEquals(column.getType(), Date.class);
+    }
+
+    @Test
+    public void testGetColumnName() throws Exception {
+        DateColumn column = new DateColumn("ColumnName");
+        assertThat(column.getColumnName(), is("DateColumn"));
     }
 }
