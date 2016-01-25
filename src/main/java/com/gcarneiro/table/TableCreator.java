@@ -95,7 +95,7 @@ public class TableCreator {
     }
 
     public String createAsciiTable() {
-        Table table = new PropertyTable();
+        Table table = new TableImpl();
         table.setColumns(columns);
         table.setRows(rows);
         return table.renderTable();

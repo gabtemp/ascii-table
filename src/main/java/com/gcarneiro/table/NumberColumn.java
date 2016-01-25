@@ -1,6 +1,6 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.AbstractColumn;
+import com.gcarneiro.table.api.PropertyColumn;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -9,7 +9,7 @@ import java.util.Locale;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class NumberColumn extends AbstractColumn<Number> {
+public class NumberColumn extends PropertyColumn<Number> {
 
     private final int decimalPlaces;
 

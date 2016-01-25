@@ -1,6 +1,5 @@
-package com.gcarneiro.table.creator;
+package com.gcarneiro.table;
 
-import com.gcarneiro.table.TableCreator;
 import com.gcarneiro.table.api.Column;
 import org.hamcrest.core.Is;
 import org.junit.Test;
@@ -64,7 +63,7 @@ public class TableCreatorTest {
         return rows;
     }
 
-    public class TestRow {
+    private class TestRow {
         String string = "Row";
         Date date = new Date();
         int number = 123456;

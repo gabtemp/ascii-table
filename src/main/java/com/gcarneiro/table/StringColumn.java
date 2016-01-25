@@ -1,6 +1,6 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.AbstractColumn;
+import com.gcarneiro.table.api.PropertyColumn;
 
 /**
  * A column that renders {@link String} rows.
@@ -8,7 +8,7 @@ import com.gcarneiro.table.api.AbstractColumn;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class StringColumn extends AbstractColumn<String> {
+public class StringColumn extends PropertyColumn<String> {
 
     protected StringColumn(String columnName) {
         super(columnName);

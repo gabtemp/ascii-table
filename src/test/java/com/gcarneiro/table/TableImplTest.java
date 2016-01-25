@@ -15,11 +15,11 @@ import static org.junit.Assert.assertThat;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class PropertyTableTest {
+public class TableImplTest {
 
     @Test
     public void testStringTable() {
-        PropertyTable table = new PropertyTable();
+        TableImpl table = new TableImpl();
 
         Column column = new StringColumn("COLUMN");
         column.setRowProperty("string");
@@ -35,7 +35,7 @@ public class PropertyTableTest {
 
     @Test
     public void testDateTable() {
-        PropertyTable table = new PropertyTable();
+        TableImpl table = new TableImpl();
 
         Column column = new DateColumn("COLUMN");
         column.setRowProperty("date");

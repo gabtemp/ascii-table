@@ -1,6 +1,6 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.AbstractColumn;
+import com.gcarneiro.table.api.PropertyColumn;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.Date;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class DateColumn extends AbstractColumn<Date> {
+public class DateColumn extends PropertyColumn<Date> {
 
     //Todo: Enable configuration of the format and locale
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");

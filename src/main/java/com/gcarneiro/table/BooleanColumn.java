@@ -1,12 +1,12 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.AbstractColumn;
+import com.gcarneiro.table.api.PropertyColumn;
 
 /**
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class BooleanColumn extends AbstractColumn<Boolean> {
+public class BooleanColumn extends PropertyColumn<Boolean> {
 
     //Todo: enable configuration of yes/no values
     private static final String YES = "Yes";
