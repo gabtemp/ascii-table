@@ -53,7 +53,7 @@ public class TableCreatorTest {
         tableCreator.addBooleanColumn("BooleanColumn", "bool");
         tableCreator.setRows(getRows());
         String tableString = tableCreator.createAsciiTable();
-        assertThat(countLines(tableString), is(3));
+        assertThat(countLines(tableString), is(6));
     }
 
     private List<TestRow> getRows() {

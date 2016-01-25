@@ -10,11 +10,7 @@ import java.util.List;
  */
 public interface Table {
 
-    List<Column> getColumns();
-
     void setColumns(List<Column> columns);
-
-    List<?> getRows();
 
     void setRows(List<?> rows);
 

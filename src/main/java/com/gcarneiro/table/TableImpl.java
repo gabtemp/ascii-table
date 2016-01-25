@@ -14,54 +14,77 @@ import java.util.List;
  */
 public class TableImpl implements Table {
 
-    List<Column> columns;
+    private List<Column> columns;
 
-    List<?> rows;
+    private List<?> rows;
+
     private int[] lengthPerColumn;
+
+    private String[] header;
+
+    private String[][] data;
 
     protected TableImpl() {
     }
 
-    public List<Column> getColumns() {
-        return columns;
-    }
-
-    public void setColumns(List<Column> columns) {
-        this.columns = columns;
-    }
-
-    public List<?> getRows() {
-        return rows;
-    }
-
-    public void setRows(List<?> rows) {
-        this.rows = rows;
-    }
-
     // TODO: Consider the column alignment
     public String renderTable() {
-        String[][] tableData = populateMatrix();
+        populateData();
         StringBuilder tableString = new StringBuilder();
 
-        for (String[] row : tableData) {
-            for (int columnId = 0; columnId < tableData[0].length; columnId++) {
+        createHeader(tableString);
+        for (String[] row : data) {
+            for (int columnId = 0; columnId < data[0].length; columnId++) {
                 String string = row[columnId];
                 String cell = Alignment.LEFT.padString(string, lengthPerColumn[columnId]);
+
+                tableString.append("| ");
                 tableString.append(cell);
-                tableString.append(" | ");
+                tableString.append(" ");
+                if (columnId == data[0].length - 1) {
+                    tableString.append(" |");
+                }
             }
             tableString.append("\n");
         }
+        createSeparator(tableString);
         return tableString.toString();
     }
 
-    private String[][] populateMatrix() {
+    private void createHeader(StringBuilder tableString) {
+        createSeparator(tableString);
+        for (int columnId = 0; columnId < header.length; columnId++) {
+            String string = header[columnId];
+            String cell = Alignment.LEFT.padString(string, lengthPerColumn[columnId]);
+
+            tableString.append("| ");
+            tableString.append(cell);
+            tableString.append(" ");
+            if (columnId == header.length - 1) {
+                tableString.append(" |");
+            }
+        }
+        tableString.append("\n");
+        createSeparator(tableString);
+    }
+
+    private void createSeparator(StringBuilder tableString) {
+        for (int i : lengthPerColumn) {
+            tableString.append("+");
+            tableString.append(repeat(i + 2, "-"));
+        }
+        tableString.append("-+");
+        tableString.append("\n");
+    }
+
+    private void populateData() {
         lengthPerColumn = new int[columns.size()];
-        String[][] matrix = new String[rows.size() + 1][columns.size()];
+        header = new String[columns.size()];
+        data = new String[rows.size()][columns.size()];
 
         for (int columnId = 0; columnId < columns.size(); columnId++) {
             String columnName = columns.get(columnId).getColumnName();
-            matrix[0][columnId] = columnName;
+            header[columnId] = columnName;
 
             updateColumnLength(columnId, columnName.length());
         }
@@ -72,18 +95,28 @@ public class TableImpl implements Table {
                 Column column = columns.get(columnId);
 
                 String rowValue = column.getRowValue(row);
-                matrix[rowId + 1][columnId] = rowValue;
+                data[rowId][columnId] = rowValue;
 
                 updateColumnLength(columnId, rowValue.length());
             }
         }
-
-        return matrix;
     }
 
     private void updateColumnLength(int columnId, int newLength) {
         if (lengthPerColumn[columnId] < newLength) {
             lengthPerColumn[columnId] = newLength;
         }
+    }
+
+    private String repeat(int n, String s) {
+        return new String(new char[n]).replace("\0", s);
+    }
+
+    public void setColumns(List<Column> columns) {
+        this.columns = columns;
+    }
+
+    public void setRows(List<?> rows) {
+        this.rows = rows;
     }
 }
