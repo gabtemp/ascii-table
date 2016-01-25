@@ -1,6 +1,5 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.Alignment;
 import com.gcarneiro.table.api.Column;
 import com.gcarneiro.table.api.Table;
 
@@ -27,54 +26,9 @@ public class TableImpl implements Table {
     protected TableImpl() {
     }
 
-    // TODO: Consider the column alignment
     public String renderTable() {
         populateData();
-        StringBuilder tableString = new StringBuilder();
-
-        createHeader(tableString);
-        for (String[] row : data) {
-            for (int columnId = 0; columnId < data[0].length; columnId++) {
-                String string = row[columnId];
-                String cell = Alignment.LEFT.padString(string, lengthPerColumn[columnId]);
-
-                tableString.append("| ");
-                tableString.append(cell);
-                tableString.append(" ");
-                if (columnId == data[0].length - 1) {
-                    tableString.append(" |");
-                }
-            }
-            tableString.append("\n");
-        }
-        createSeparator(tableString);
-        return tableString.toString();
-    }
-
-    private void createHeader(StringBuilder tableString) {
-        createSeparator(tableString);
-        for (int columnId = 0; columnId < header.length; columnId++) {
-            String string = header[columnId];
-            String cell = Alignment.LEFT.padString(string, lengthPerColumn[columnId]);
-
-            tableString.append("| ");
-            tableString.append(cell);
-            tableString.append(" ");
-            if (columnId == header.length - 1) {
-                tableString.append(" |");
-            }
-        }
-        tableString.append("\n");
-        createSeparator(tableString);
-    }
-
-    private void createSeparator(StringBuilder tableString) {
-        for (int i : lengthPerColumn) {
-            tableString.append("+");
-            tableString.append(repeat(i + 2, "-"));
-        }
-        tableString.append("-+");
-        tableString.append("\n");
+        return TableRenderer.renderTable(header, data, lengthPerColumn);
     }
 
     private void populateData() {
@@ -106,10 +60,6 @@ public class TableImpl implements Table {
         if (lengthPerColumn[columnId] < newLength) {
             lengthPerColumn[columnId] = newLength;
         }
-    }
-
-    private String repeat(int n, String s) {
-        return new String(new char[n]).replace("\0", s);
     }
 
     public void setColumns(List<Column> columns) {
