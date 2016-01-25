@@ -9,7 +9,6 @@ import java.lang.reflect.Method;
  */
 public class PropertyResolver {
 
-
     public static <T extends Serializable> T extractProperty(String rowProperty, Object row, Class<T> type) {
         try {
             Method method = findGetMethod(rowProperty, row);

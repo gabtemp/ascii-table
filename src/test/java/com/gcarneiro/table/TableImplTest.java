@@ -30,7 +30,7 @@ public class TableImplTest {
         table.setRows(Collections.singletonList(row));
 
         String tableString = table.renderTable();
-        assertThat(tableString, is("| COLUMN | \n| ROW | \n"));
+        assertThat(tableString, is("COLUMN | \nROW    | \n"));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class TableImplTest {
         table.setRows(Collections.singletonList(row));
 
         String tableString = table.renderTable();
-        assertThat(tableString, is("| COLUMN | \n| 24/01/2016 | \n"));
+        assertThat(tableString, is("COLUMN     | \n24/01/2016 | \n"));
     }
 
     private class TestRow {
