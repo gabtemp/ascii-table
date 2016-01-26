@@ -15,7 +15,7 @@ public final class TableRenderer {
         StringBuilder tableString = new StringBuilder();
 
         StringBuilder separatorBuilder = createSeparator(lengthPerColumn);
-        StringBuilder headerBuilder = createHeader(header, lengthPerColumn);
+        StringBuilder headerBuilder = createRow(header, lengthPerColumn);
         StringBuilder dataBuilder = createData(data, lengthPerColumn);
 
         tableString.append(separatorBuilder);
@@ -27,40 +27,36 @@ public final class TableRenderer {
         return tableString.toString();
     }
 
-    private static StringBuilder createHeader(String[] header, int[] lengthPerColumn) {
-        StringBuilder headerBuilder = new StringBuilder();
-        for (int columnId = 0; columnId < header.length; columnId++) {
-            String string = header[columnId];
-            String cell = Alignment.LEFT.padString(string, lengthPerColumn[columnId]);
-
-            headerBuilder.append("| ");
-            headerBuilder.append(cell);
-            headerBuilder.append(" ");
-            if (columnId == header.length - 1) {
-                headerBuilder.append("|");
-            }
-        }
-        headerBuilder.append("\n");
-        return headerBuilder;
-    }
-
     private static StringBuilder createData(String[][] data, int[] lengthPerColumn) {
         StringBuilder dataBuilder = new StringBuilder();
         for (String[] row : data) {
-            for (int columnId = 0; columnId < data[0].length; columnId++) {
-                String string = row[columnId];
-                String cell = Alignment.LEFT.padString(string, lengthPerColumn[columnId]);
-
-                dataBuilder.append("| ");
-                dataBuilder.append(cell);
-                dataBuilder.append(" ");
-                if (columnId == data[0].length - 1) {
-                    dataBuilder.append("|");
-                }
-            }
-            dataBuilder.append("\n");
+            dataBuilder.append(createRow(row, lengthPerColumn));
         }
         return dataBuilder;
+    }
+
+    private static StringBuilder createRow(String[] header, int[] lengthPerColumn) {
+        StringBuilder rowBuilder = new StringBuilder();
+        for (int columnId = 0; columnId < header.length; columnId++) {
+            String value = header[columnId];
+            boolean lastColumn = columnId == header.length - 1;
+            rowBuilder.append(printCell(value, lengthPerColumn[columnId], lastColumn));
+        }
+        rowBuilder.append("\n");
+        return rowBuilder;
+    }
+
+    private static StringBuilder printCell(String value, int cellLength, boolean lastCell) {
+        StringBuilder cellBuilder = new StringBuilder();
+        //TODO: Consider column alignment
+        String cell = Alignment.LEFT.padString(value, cellLength);
+        cellBuilder.append("| ");
+        cellBuilder.append(cell);
+        cellBuilder.append(" ");
+        if (lastCell) {
+            cellBuilder.append("|");
+        }
+        return cellBuilder;
     }
 
     private static StringBuilder createSeparator(int[] lengthPerColumn) {
