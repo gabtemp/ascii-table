@@ -12,12 +12,15 @@ import java.io.Serializable;
  */
 public abstract class PropertyColumn<T extends Serializable> implements Column<T> {
 
-    private String columnName;
+    private final String columnName;
+
+    private final Alignment columnAlignment;
 
     private String rowProperty;
 
-    protected PropertyColumn(String columnName) {
+    protected PropertyColumn(String columnName, Alignment columnAlignment) {
         this.columnName = columnName;
+        this.columnAlignment = columnAlignment;
     }
 
     @Override
@@ -31,6 +34,11 @@ public abstract class PropertyColumn<T extends Serializable> implements Column<T
     @Override
     public String getColumnName() {
         return this.columnName;
+    }
+
+    @Override
+    public Alignment getColumnAlignment() {
+        return columnAlignment;
     }
 
     @Override

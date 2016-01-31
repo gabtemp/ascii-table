@@ -1,5 +1,6 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
 import com.gcarneiro.table.api.PropertyColumn;
 
 /**
@@ -10,8 +11,8 @@ import com.gcarneiro.table.api.PropertyColumn;
  */
 public class StringColumn extends PropertyColumn<String> {
 
-    protected StringColumn(String columnName) {
-        super(columnName);
+    protected StringColumn(String columnName, Alignment columnAlignment) {
+        super(columnName, columnAlignment);
     }
 
     public String resolveValue(String data) {

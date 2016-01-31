@@ -35,4 +35,15 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>${env.MAVEN_RELEASE_REPOSITORY_URL}</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>${env.MAVEN_SNAPSHOT_REPOSITORY_URL}</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

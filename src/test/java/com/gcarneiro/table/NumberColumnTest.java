@@ -1,5 +1,6 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -17,7 +18,7 @@ public class NumberColumnTest {
 
     @Test
     public void testResolveValue() throws Exception {
-        NumberColumn column = new NumberColumn("ColumnName", 10);
+        NumberColumn column = new NumberColumn("ColumnName", Alignment.LEFT, 10);
 
         //Integers
         assertThat(column.resolveValue(5), is("5"));
@@ -52,13 +53,13 @@ public class NumberColumnTest {
 
     @Test
     public void testGetType() throws Exception {
-        NumberColumn column = new NumberColumn("ColumnName", 2);
+        NumberColumn column = new NumberColumn("ColumnName", Alignment.LEFT, 2);
         assertEquals(column.getType(), Number.class);
     }
 
     @Test
     public void testGetColumnName() throws Exception {
-        NumberColumn column = new NumberColumn("ColumnName", 2);
+        NumberColumn column = new NumberColumn("ColumnName", Alignment.LEFT, 2);
         assertThat(column.getColumnName(), is("ColumnName"));
     }
 }

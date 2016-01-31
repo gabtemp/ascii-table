@@ -1,5 +1,6 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
 import com.gcarneiro.table.api.PropertyColumn;
 
 /**
@@ -13,8 +14,8 @@ public class BooleanColumn extends PropertyColumn<Boolean> {
 
     private static final String NO = "No";
 
-    protected BooleanColumn(String columnName) {
-        super(columnName);
+    protected BooleanColumn(String columnName, Alignment columnAlignment) {
+        super(columnName, columnAlignment);
     }
 
     @Override

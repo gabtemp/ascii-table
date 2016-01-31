@@ -1,5 +1,6 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -18,7 +19,7 @@ public class DateColumnTest {
 
     @Test
     public void testResolveValue() throws Exception {
-        DateColumn column = new DateColumn("DateColumn");
+        DateColumn column = new DateColumn("DateColumn", Alignment.LEFT);
         Calendar calendar = Calendar.getInstance();
 
         calendar.set(2000, JANUARY, 22);
@@ -33,13 +34,13 @@ public class DateColumnTest {
 
     @Test
     public void testGetType() throws Exception {
-        DateColumn column = new DateColumn("ColumnName");
+        DateColumn column = new DateColumn("ColumnName", Alignment.LEFT);
         assertEquals(column.getType(), Date.class);
     }
 
     @Test
     public void testGetColumnName() throws Exception {
-        DateColumn column = new DateColumn("DateColumn");
+        DateColumn column = new DateColumn("DateColumn", Alignment.LEFT);
         assertThat(column.getColumnName(), is("DateColumn"));
     }
 }

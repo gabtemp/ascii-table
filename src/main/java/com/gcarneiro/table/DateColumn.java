@@ -1,5 +1,6 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
 import com.gcarneiro.table.api.PropertyColumn;
 
 import java.text.SimpleDateFormat;
@@ -16,8 +17,8 @@ public class DateColumn extends PropertyColumn<Date> {
     //Todo: Enable configuration of the format and locale
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
 
-    protected DateColumn(String columnName) {
-        super(columnName);
+    protected DateColumn(String columnName, Alignment columnAlignment) {
+        super(columnName, columnAlignment);
     }
 
     public String resolveValue(Date data) {

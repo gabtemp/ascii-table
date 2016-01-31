@@ -1,5 +1,6 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -14,7 +15,7 @@ public class BooleanColumnTest {
 
     @Test
     public void testResolveValue() throws Exception {
-        BooleanColumn column = new BooleanColumn("ColumnName");
+        BooleanColumn column = new BooleanColumn("ColumnName", Alignment.LEFT);
         assertThat(column.resolveValue(true), is("Yes"));
         assertThat(column.resolveValue(false), is("No"));
         assertThat(column.resolveValue(Boolean.TRUE), is("Yes"));
@@ -23,13 +24,13 @@ public class BooleanColumnTest {
 
     @Test
     public void testGetType() throws Exception {
-        BooleanColumn column = new BooleanColumn("ColumnName");
+        BooleanColumn column = new BooleanColumn("ColumnName", Alignment.LEFT);
         assertEquals(column.getType(), Boolean.class);
     }
 
     @Test
     public void testGetColumnName() throws Exception {
-        BooleanColumn column = new BooleanColumn("ColumnName");
+        BooleanColumn column = new BooleanColumn("ColumnName", Alignment.LEFT);
         assertThat(column.getColumnName(), is("ColumnName"));
     }
 }

@@ -1,5 +1,6 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
 import com.gcarneiro.table.api.Column;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class TableImplTest {
     public void testStringTable() {
         TableImpl table = new TableImpl();
 
-        Column column = new StringColumn("COLUMN");
+        Column column = new StringColumn("COLUMN", Alignment.LEFT);
         column.setRowProperty("string");
         TestRow row = new TestRow();
         row.string = "ROW";
@@ -37,7 +38,7 @@ public class TableImplTest {
     public void testDateTable() {
         TableImpl table = new TableImpl();
 
-        Column column = new DateColumn("COLUMN");
+        Column column = new DateColumn("COLUMN", Alignment.LEFT);
         column.setRowProperty("date");
         Calendar calendar = Calendar.getInstance();
         calendar.set(2016, JANUARY, 24);
