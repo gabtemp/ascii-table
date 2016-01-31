@@ -1,5 +1,7 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,10 +15,10 @@ public class CreateTable {
     public static void main(String[] args) {
         TableCreator tableCreator = new TableCreator();
 
-        tableCreator.addStringColumn("Name", "name");
-        tableCreator.addNumberColumn("Age", "age");
-        tableCreator.addDateColumn("Birth date", "birthDate");
-        tableCreator.addBooleanColumn("Married", "married");
+        tableCreator.addStringColumn("Name", "name", Alignment.CENTER);
+        tableCreator.addNumberColumn("Age", "age", Alignment.RIGHT, 2);
+        tableCreator.addDateColumn("Person's Birth date", "birthDate", Alignment.LEFT);
+        tableCreator.addBooleanColumn("Married", "married", Alignment.CENTER);
 
         tableCreator.setRows(createRows());
 

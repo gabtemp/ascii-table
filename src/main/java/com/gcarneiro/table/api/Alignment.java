@@ -15,7 +15,13 @@ public enum Alignment {
     CENTER {
         @Override
         public String padString(String string, int length) {
-            return null;
+            int spaces = length - string.length();
+            if (spaces <= 0) {
+                return string;
+            } else {
+                int right = spaces / 2;
+                return LEFT.padString(RIGHT.padString(string, string.length() + right), string.length() + spaces);
+            }
         }
     },
 

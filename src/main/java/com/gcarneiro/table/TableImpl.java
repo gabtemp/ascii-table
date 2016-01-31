@@ -1,5 +1,6 @@
 package com.gcarneiro.table;
 
+import com.gcarneiro.table.api.Alignment;
 import com.gcarneiro.table.api.Column;
 import com.gcarneiro.table.api.Table;
 
@@ -19,6 +20,8 @@ public class TableImpl implements Table {
 
     private int[] lengthPerColumn;
 
+    private Alignment[] alignments;
+
     private String[] header;
 
     private String[][] data;
@@ -28,11 +31,12 @@ public class TableImpl implements Table {
 
     public String renderTable() {
         populateData();
-        return TableRenderer.renderTable(header, data, lengthPerColumn);
+        return TableRenderer.renderTable(header, data, lengthPerColumn, alignments);
     }
 
     private void populateData() {
         lengthPerColumn = new int[columns.size()];
+        alignments = new Alignment[columns.size()];
         header = new String[columns.size()];
         data = new String[rows.size()][columns.size()];
 
@@ -41,6 +45,7 @@ public class TableImpl implements Table {
             header[columnId] = columnName;
 
             updateColumnLength(columnId, columnName.length());
+            alignments[columnId] = columns.get(columnId).getColumnAlignment();
         }
 
         for (int rowId = 0; rowId < rows.size(); rowId++) {
