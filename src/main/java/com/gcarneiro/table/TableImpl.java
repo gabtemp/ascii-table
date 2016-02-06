@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class TableImpl<T> implements Table<T> {
 
-    private List<Column> columns;
+    private List<? extends Column> columns;
 
     private List<T> rows;
 
@@ -67,7 +67,7 @@ public class TableImpl<T> implements Table<T> {
         }
     }
 
-    public void setColumns(List<Column> columns) {
+    public void setColumns(List<? extends Column> columns) {
         this.columns = columns;
     }
 

@@ -14,9 +14,7 @@ public interface Column<T extends Serializable> {
 
     Alignment getColumnAlignment();
 
-    String getRowProperty();
-
-    void setRowProperty(String rowProperty);
+    void setColumnAlignment(Alignment alignment);
 
     <E> String getRowValue(E row);
 

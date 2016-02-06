@@ -1,6 +1,5 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.Alignment;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -15,7 +14,7 @@ public class StringColumnTest {
 
     @Test
     public void testResolveValue() throws Exception {
-        StringColumn column = new StringColumn("ColumnName", Alignment.LEFT);
+        StringColumn column = new StringColumn("ColumnName");
 
         assertThat(column.resolveValue(""), is(""));
         assertThat(column.resolveValue("data"), is("data"));
@@ -24,13 +23,13 @@ public class StringColumnTest {
 
     @Test
     public void testGetType() throws Exception {
-        StringColumn column = new StringColumn("ColumnName", Alignment.LEFT);
+        StringColumn column = new StringColumn("ColumnName");
         assertEquals(column.getType(), String.class);
     }
 
     @Test
     public void testGetColumnName() throws Exception {
-        StringColumn column = new StringColumn("ColumnName", Alignment.LEFT);
+        StringColumn column = new StringColumn("ColumnName");
         assertThat(column.getColumnName(), is("ColumnName"));
     }
 }

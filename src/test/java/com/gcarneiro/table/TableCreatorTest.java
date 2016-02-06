@@ -30,7 +30,6 @@ public class TableCreatorTest {
         Column<String> column = tableCreator.addStringColumn("StringColumn", "string");
 
         assertThat(column.getColumnName(), is("StringColumn"));
-        assertThat(column.getRowProperty(), is("string"));
         assertThat(column.getType(), Is.<Class<String>>is(String.class));
     }
 
@@ -40,7 +39,6 @@ public class TableCreatorTest {
         Column<Date> column = tableCreator.addDateColumn("DateColumn", "date");
 
         assertThat(column.getColumnName(), is("DateColumn"));
-        assertThat(column.getRowProperty(), is("date"));
         assertThat(column.getType(), Is.<Class<Date>>is(Date.class));
     }
 

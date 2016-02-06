@@ -28,8 +28,9 @@ public class TableCreator<T> {
      * @return the new column for further configuration.
      */
     public Column<String> addStringColumn(String columnName, String property, Alignment alignment) {
-        StringColumn column = new StringColumn(columnName, alignment);
+        StringColumn column = new StringColumn(columnName);
         column.setRowProperty(property);
+        column.setColumnAlignment(alignment);
         columns.add(column);
         return column;
     }
@@ -56,8 +57,9 @@ public class TableCreator<T> {
      * @return the new column for further configuration.
      */
     public Column<Date> addDateColumn(String columnName, String property, Alignment alignment) {
-        DateColumn column = new DateColumn(columnName, alignment);
+        DateColumn column = new DateColumn(columnName);
         column.setRowProperty(property);
+        column.setColumnAlignment(alignment);
         columns.add(column);
         return column;
     }
@@ -84,8 +86,9 @@ public class TableCreator<T> {
      * @return the new column for further configuration.
      */
     public Column<Boolean> addBooleanColumn(String columnName, String property, Alignment alignment) {
-        BooleanColumn column = new BooleanColumn(columnName, alignment);
+        BooleanColumn column = new BooleanColumn(columnName);
         column.setRowProperty(property);
+        column.setColumnAlignment(alignment);
         columns.add(column);
         return column;
     }
@@ -113,8 +116,9 @@ public class TableCreator<T> {
      * @return the new column for further configuration.
      */
     public Column<Number> addNumberColumn(String columnName, String property, Alignment alignment, int decimalPlaces) {
-        NumberColumn column = new NumberColumn(columnName, alignment, decimalPlaces);
+        NumberColumn column = new NumberColumn(columnName, decimalPlaces);
         column.setRowProperty(property);
+        column.setColumnAlignment(alignment);
         columns.add(column);
         return column;
     }

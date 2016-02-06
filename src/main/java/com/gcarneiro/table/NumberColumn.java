@@ -1,6 +1,5 @@
 package com.gcarneiro.table;
 
-import com.gcarneiro.table.api.Alignment;
 import com.gcarneiro.table.api.PropertyColumn;
 
 import java.text.NumberFormat;
@@ -14,8 +13,8 @@ public class NumberColumn extends PropertyColumn<Number> {
 
     private final int decimalPlaces;
 
-    protected NumberColumn(String columnName, Alignment columnAlignment, int decimalPlaces) {
-        super(columnName, columnAlignment);
+    protected NumberColumn(String columnName, int decimalPlaces) {
+        super(columnName);
         this.decimalPlaces = decimalPlaces;
     }
 

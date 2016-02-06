@@ -14,13 +14,12 @@ public abstract class PropertyColumn<T extends Serializable> implements Column<T
 
     private final String columnName;
 
-    private final Alignment columnAlignment;
+    private Alignment columnAlignment = Alignment.LEFT;
 
     private String rowProperty;
 
-    protected PropertyColumn(String columnName, Alignment columnAlignment) {
+    protected PropertyColumn(String columnName) {
         this.columnName = columnName;
-        this.columnAlignment = columnAlignment;
     }
 
     @Override
@@ -42,11 +41,14 @@ public abstract class PropertyColumn<T extends Serializable> implements Column<T
     }
 
     @Override
+    public void setColumnAlignment(Alignment columnAlignment) {
+        this.columnAlignment = columnAlignment;
+    }
+
     public String getRowProperty() {
         return this.rowProperty;
     }
 
-    @Override
     public void setRowProperty(String rowProperty) {
         this.rowProperty = rowProperty;
     }
