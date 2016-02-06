@@ -12,11 +12,11 @@ import java.util.List;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class TableImpl implements Table {
+public class TableImpl<T> implements Table<T> {
 
     private List<Column> columns;
 
-    private List<?> rows;
+    private List<T> rows;
 
     private int[] lengthPerColumn;
 
@@ -49,7 +49,7 @@ public class TableImpl implements Table {
         }
 
         for (int rowId = 0; rowId < rows.size(); rowId++) {
-            Object row = rows.get(rowId);
+            T row = rows.get(rowId);
             for (int columnId = 0; columnId < columns.size(); columnId++) {
                 Column column = columns.get(columnId);
 
@@ -71,7 +71,7 @@ public class TableImpl implements Table {
         this.columns = columns;
     }
 
-    public void setRows(List<?> rows) {
+    public void setRows(List<T> rows) {
         this.rows = rows;
     }
 }

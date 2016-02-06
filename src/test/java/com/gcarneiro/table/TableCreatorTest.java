@@ -26,7 +26,7 @@ public class TableCreatorTest {
 
     @Test
     public void testAddStringColumn() throws Exception {
-        TableCreator tableCreator = new TableCreator();
+        TableCreator<TestRow> tableCreator = new TableCreator<>();
         Column<String> column = tableCreator.addStringColumn("StringColumn", "string");
 
         assertThat(column.getColumnName(), is("StringColumn"));
@@ -36,7 +36,7 @@ public class TableCreatorTest {
 
     @Test
     public void testAddDateColumn() throws Exception {
-        TableCreator tableCreator = new TableCreator();
+        TableCreator<TestRow> tableCreator = new TableCreator<>();
         Column<Date> column = tableCreator.addDateColumn("DateColumn", "date");
 
         assertThat(column.getColumnName(), is("DateColumn"));
@@ -46,7 +46,7 @@ public class TableCreatorTest {
 
     @Test
     public void testCreateAsciiTable() throws Exception {
-        TableCreator tableCreator = new TableCreator();
+        TableCreator<TestRow> tableCreator = new TableCreator<>();
         tableCreator.addStringColumn("DateColumn", "string");
         tableCreator.addDateColumn("StringColumn", "date");
         tableCreator.addNumberColumn("NumberColumn", "number");

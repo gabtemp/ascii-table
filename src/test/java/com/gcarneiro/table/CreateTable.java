@@ -13,7 +13,7 @@ import java.util.List;
 public class CreateTable {
 
     public static void main(String[] args) {
-        TableCreator tableCreator = new TableCreator();
+        TableCreator<Person> tableCreator = new TableCreator<>();
 
         tableCreator.addStringColumn("Name", "name", Alignment.CENTER);
         tableCreator.addNumberColumn("Age", "age", Alignment.RIGHT, 2);

@@ -18,7 +18,7 @@ public interface Column<T extends Serializable> {
 
     void setRowProperty(String rowProperty);
 
-    String getRowValue(Object row);
+    <E> String getRowValue(E row);
 
     Class<T> getType();
 }

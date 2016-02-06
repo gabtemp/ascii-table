@@ -20,7 +20,7 @@ public class TableImplTest {
 
     @Test
     public void testStringTable() {
-        TableImpl table = new TableImpl();
+        TableImpl<TestRow> table = new TableImpl<>();
 
         Column column = new StringColumn("COLUMN", Alignment.LEFT);
         column.setRowProperty("string");
@@ -36,7 +36,7 @@ public class TableImplTest {
 
     @Test
     public void testDateTable() {
-        TableImpl table = new TableImpl();
+        TableImpl<TestRow> table = new TableImpl<>();
 
         Column column = new DateColumn("COLUMN", Alignment.LEFT);
         column.setRowProperty("date");

@@ -12,11 +12,11 @@ import java.util.List;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public class TableCreator {
+public class TableCreator<T> {
 
     private List<Column> columns = new LinkedList<>();
 
-    private List<?> rows;
+    private List<T> rows;
 
     /**
      * Creates a new {@link String} column with the provided name. The value of all rows in this column will be extracted from
@@ -131,12 +131,12 @@ public class TableCreator {
         return this.addNumberColumn(columnName, property, Alignment.LEFT, 2);
     }
 
-    public void setRows(List<?> rows) {
+    public void setRows(List<T> rows) {
         this.rows = rows;
     }
 
     public String createAsciiTable() {
-        Table table = new TableImpl();
+        Table<T> table = new TableImpl<>();
         table.setColumns(columns);
         table.setRows(rows);
         return table.renderTable();

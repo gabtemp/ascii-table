@@ -8,11 +8,11 @@ import java.util.List;
  * @author gabriel.carneiro
  * @since 24/01/16.
  */
-public interface Table {
+public interface Table<T> {
 
     void setColumns(List<Column> columns);
 
-    void setRows(List<?> rows);
+    void setRows(List<T> rows);
 
     String renderTable();
 }
